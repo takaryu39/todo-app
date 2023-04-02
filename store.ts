@@ -11,6 +11,7 @@ type State = {
 };
 
 const useStore = create<State>((set) => ({
+  //状態管理を一箇所でまとめて定義する。各ページで定義しなくてもよい。
   editedTask: { id: "", title: "" },
   editedNotice: { id: "", content: "" },
   updateEditedTask: (payload) =>

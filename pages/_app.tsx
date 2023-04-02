@@ -20,7 +20,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   /* アクセスしたユーザーのログイン状況によって、ページ遷移を自動で行ってくれる関数 */
   const validateSession = async () => {
     const user = supabase.auth.user();
-    console.log(user);
 
     if (user && pathname === "/") {
       push("/dashboard");

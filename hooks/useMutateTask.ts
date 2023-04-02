@@ -8,6 +8,7 @@ export const useMutateTask = () => {
   const reset = useStore((state) => state.resetEditedTask);
 
   const createTaskMutation = useMutation(
+    //1.supabaseにタスクを追加
     async (task: Omit<Task, "id" | "created_at">) => {
       const { data, error } = await supabase.from("todos").insert(task);
       if (error) throw new Error(error.message);
@@ -15,6 +16,7 @@ export const useMutateTask = () => {
     },
     {
       onSuccess: (res) => {
+        //2.supabaseにタスクを追加したあとの処理（フロント側の処理）
         //React Queryを用いてキャッシュに登録したタスクに追加する
         const previousTodos = queryClient.getQueryData<Task[]>(["todos"]);
         if (previousTodos) {

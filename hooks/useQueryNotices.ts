@@ -15,7 +15,7 @@ export const useQueryNotices = () => {
   return useQuery<Notice[], Error>({
     queryKey: ["notices"],
     queryFn: getNotices,
-    staleTime: 0,
+    staleTime: 0, //他のユーザーが更新したnoticesを閲覧するために設定
     refetchOnWindowFocus: true,
   });
 };
